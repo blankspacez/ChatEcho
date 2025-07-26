@@ -1,0 +1,29 @@
+server:
+  port: 8080
+spring:
+  ai:
+    openai:
+      base-url: "https://dashscope.aliyuncs.com/compatible-mode"
+      api-key: ${DASHSCOPE_API_KEY}
+      chat:
+        options:
+          model: qwen-max-latest
+      embedding:
+        options:
+          model: text-embedding-v3
+          dimensions: 1024
+  datasource:
+    url: jdbc:mysql://127.0.0.1:3306/aicourse?serverTimezone=Asia/Shanghai&useSSL=false&useUnicode=true&characterEncoding=utf-8&allowPublicKeyRetrieval=true
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    username: root
+    password: 123456
+  servlet:
+    multipart:
+      # 单个文件的最大大小为100MB
+      max-file-size: 104857600
+      # 整个请求的最大大小为100MB
+      max-request-size: 104857600
+logging:
+  level:
+    org.springframework.ai: debug
+    com.seu.ai: debug
